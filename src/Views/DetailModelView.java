@@ -183,6 +183,11 @@ public class DetailModelView extends javax.swing.JFrame {
                     arbol.setVisible(true);
                     this.setVisible(false);
                 break;
+                case "Lugar":
+                    
+                    LugarView lugar = new LugarView(table, "Insertar");
+                    lugar.setVisible(true);
+                    this.setVisible(false);
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -194,6 +199,12 @@ public class DetailModelView extends javax.swing.JFrame {
                 case "Especie_Arbol":
                     EspecieArbolView arbol = new EspecieArbolView(table, SelectedPK);
                     arbol.setVisible(true);
+                    this.setVisible(false);
+                break;
+                case "Lugar":
+                    
+                    LugarView lugar = new LugarView(table, SelectedPK);
+                    lugar.setVisible(true);
                     this.setVisible(false);
                 break;
             }
