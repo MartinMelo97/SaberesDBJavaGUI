@@ -209,6 +209,12 @@ public class DetailModelView extends javax.swing.JFrame {
                     plagas.setVisible(true);
                     this.setVisible(false);
                 break;
+                
+                case "Limpieza":
+                    LimpiezaView limpieza = new LimpiezaView(table, "Insertar");
+                    limpieza.setVisible(true);
+                    this.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -247,6 +253,12 @@ public class DetailModelView extends javax.swing.JFrame {
                 case "Eliminacion_Plagas":
                     PlagasView plagas = new PlagasView(table, SelectedPK);
                     plagas.setVisible(true);
+                    this.setVisible(false);
+                break;
+                
+                case "Limpieza":
+                    LimpiezaView limpieza = new LimpiezaView(table, SelectedPK);
+                    limpieza.setVisible(true);
                     this.setVisible(false);
                 break;
             }
