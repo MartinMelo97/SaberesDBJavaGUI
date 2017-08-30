@@ -199,6 +199,11 @@ public class DetailModelView extends javax.swing.JFrame {
                     operarios.setVisible(true);
                     this.setVisible(false);
                 break;
+                case "Podas":
+                    PodasView podas = new PodasView(table, "Insertar");
+                    podas.setVisible(true);
+                    this.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -226,6 +231,12 @@ public class DetailModelView extends javax.swing.JFrame {
                 case "Operarios":
                     OperariosView operarios = new OperariosView(table, SelectedPK);
                     operarios.setVisible(true);
+                    this.setVisible(false);
+                break;
+                
+                case "Podas":
+                    PodasView podas = new PodasView(table, SelectedPK);
+                    podas.setVisible(true);
                     this.setVisible(false);
                 break;
             }
