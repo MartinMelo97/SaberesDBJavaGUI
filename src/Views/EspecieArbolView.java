@@ -32,7 +32,7 @@ public class EspecieArbolView extends javax.swing.JFrame {
         this.tabla = tabla;
         this.actionOrID = actionOrId;
         String pedro = putNameinLabel(tabla);
-        if(actionOrId.equals("Insertar"))
+        if(actionOrId =="Insertar")
         {
             this.title = actionOrId + " " + pedro;
             
@@ -40,6 +40,8 @@ public class EspecieArbolView extends javax.swing.JFrame {
         else
         {
             this.title = "Modificar" + " " + pedro+"("+actionOrId+")";
+            TxtCodEspecie.setEditable(false);
+            getOne(actionOrID);
         }
         
         jLabel1.setText(this.title);
@@ -198,13 +200,21 @@ public class EspecieArbolView extends javax.swing.JFrame {
             Connection conec = conn.getConexion();
             try{
                 query = conec.createStatement();
-                query.executeUpdate("INSERT INTO "+tabla+"(Cod_Especie, Nombre, Familia) "
-                        + "values ('"+code+"', '"+nombre+"', '"+family+"')");
-                System.out.println("Se añadio correctamente");
+                if(actionOrID == "Insertar")
+                {
+                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Especie, Nombre, Familia) "
+                            + "values ('"+code+"', '"+nombre+"', '"+family+"')");
+                    System.out.println("Se añadio correctamente");
+                }
+                else
+                {
+                    query.executeUpdate("UPDATE "+tabla+" set Nombre='"+nombre+"',Familia='"+family+"' WHERE Cod_Especie = '"+actionOrID+"'");
+                    System.out.println("Se actualizo correctamente");
+                }
             }
             catch(SQLException e)
             {
-                System.out.println("Fallo");
+                System.out.println("Fallo"+e);
             }
             
         }
@@ -271,7 +281,26 @@ public class EspecieArbolView extends javax.swing.JFrame {
         return namee;    
     }
     
-    
+    public static void getOne(String ID)
+    {
+        conn = new Conexion();
+        Connection conec = conn.getConexion();
+        try{
+            query = conec.createStatement();
+            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Especie = '"+ID+"'");
+            while(rs.next())
+            {
+                TxtCodEspecie.setText(rs.getString("Cod_Especie"));
+                TxtName.setText(rs.getString("Nombre"));
+                TxtFamily.setText(rs.getString("Familia"));
+            }
+            
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Fallo"+e);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBack;

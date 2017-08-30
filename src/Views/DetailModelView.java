@@ -26,7 +26,9 @@ public class DetailModelView extends javax.swing.JFrame {
     private static String table;
     private static Statement query;
     private static DefaultTableModel model;
-    private static String SelectedPK;
+    private static String PrimaryKey;
+    private static String SelectedPK = "";
+    private static int roww;
     /**
      * Creates new form DetailModelView
      */
@@ -47,7 +49,7 @@ public class DetailModelView extends javax.swing.JFrame {
             public void valueChanged(ListSelectionEvent e) {
                 if(tableRecords.getSelectedRow() != -1)
                 {
-                    int roww = tableRecords.getSelectedRow();
+                    roww = tableRecords.getSelectedRow();
                     SelectedPK = tableRecords.getValueAt(roww,0).toString();
                 }
             }
@@ -109,6 +111,11 @@ public class DetailModelView extends javax.swing.JFrame {
         BtnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/delete.png"))); // NOI18N
         BtnDelete.setText("Eliminar");
         BtnDelete.setIconTextGap(6);
+        BtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDeleteActionPerformed(evt);
+            }
+        });
 
         BtnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/add-button-inside-black-circle.png"))); // NOI18N
         BtnAdd.setText("Añadir");
@@ -170,16 +177,55 @@ public class DetailModelView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void BtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAddActionPerformed
-        EspecieArbolView arbol = new EspecieArbolView(table, "Insertar");
-        arbol.setVisible(true);
-        this.setVisible(false);
+        switch(table){
+                case "Especie_Arbol":
+                    EspecieArbolView arbol = new EspecieArbolView(table, "Insertar");
+                    arbol.setVisible(true);
+                    this.setVisible(false);
+                break;
+        }
     }//GEN-LAST:event_BtnAddActionPerformed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        EspecieArbolView arbol = new EspecieArbolView(table, SelectedPK);
-        arbol.setVisible(true);
-        this.setVisible(false);
+        if(SelectedPK != "")
+        {
+            switch(table)
+            {
+                case "Especie_Arbol":
+                    EspecieArbolView arbol = new EspecieArbolView(table, SelectedPK);
+                    arbol.setVisible(true);
+                    this.setVisible(false);
+                break;
+            }
+        }
+        else
+        {
+            System.out.println("No se puede, no has seleccionado nada");
+        }
+        
     }//GEN-LAST:event_BtnEditActionPerformed
+
+    private void BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDeleteActionPerformed
+        if(SelectedPK != "")
+        {
+            conn = new Conexion();
+        Connection conec = conn.getConexion();
+        try {
+            query = conec.createStatement();
+            query.executeUpdate("DELETE FROM "+table+" WHERE "+PrimaryKey+" = '"+SelectedPK+"'");
+            ((DefaultTableModel)tableRecords.getModel()).removeRow(roww);
+            System.out.println("Adios popo");
+        }
+        catch(SQLException e)
+        {
+            System.out.println("Me quedo popo");
+        }
+        }
+        else
+        {
+            System.out.println("No se puede, no has seleccionado nada");
+        }
+    }//GEN-LAST:event_BtnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -232,6 +278,7 @@ public class DetailModelView extends javax.swing.JFrame {
                 columnstoTable[i] = columns.getColumnLabel(i+1);
                 System.out.println(columnstoTable[i]);
             }
+            PrimaryKey = columnstoTable[0];
             
             model = new DefaultTableModel(null, columnstoTable);
             
