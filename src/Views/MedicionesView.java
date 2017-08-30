@@ -15,8 +15,7 @@ import java.sql.SQLException;
  *
  * @author martinmelo
  */
-public class LimpiezaView extends javax.swing.JFrame {
-
+public class MedicionesView extends javax.swing.JFrame {
     private static String title;
     private static JOptionPane panel;
     private static String tabla;
@@ -24,13 +23,13 @@ public class LimpiezaView extends javax.swing.JFrame {
     private static Statement query;
     private static String actionOrID;
     /**
-     * Creates new form LimpiezaView
+     * Creates new form MedicionesView
      */
-    public LimpiezaView() {
+    public MedicionesView() {
         initComponents();
     }
     
-    public LimpiezaView(String tabla, String actionOrId)
+    public MedicionesView(String tabla, String actionOrId)
     {
         initComponents();
         this.tabla = tabla;
@@ -42,18 +41,18 @@ public class LimpiezaView extends javax.swing.JFrame {
             LabelActualEjemplar.setVisible(false);
             LabelActualOperario1.setVisible(false);
             LabelActualOperario2.setVisible(false);
-            LabelActualTipo.setVisible(false);
         }
         else
         {
             this.title = "Modificar" + " " + pedro+"("+actionOrId+")";
-            TxtCodLimpieza.setEditable(false);
+            TxtCodMedicion.setEditable(false);
             BtnClean.setEnabled(false);
             getOne(actionOrID);
         }
         jLabel1.setText(this.title);
         this.setTitle(this.title);
         fillSelects();
+    
     }
 
     /**
@@ -65,34 +64,49 @@ public class LimpiezaView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         SelectOperario1 = new javax.swing.JComboBox<>();
+        TxtCodMedicion = new javax.swing.JTextField();
         LabelActualOperario1 = new javax.swing.JLabel();
+        SelectEjemplar = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
+        SelectOperario2 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         Fecha_Fin = new javax.swing.JFormattedTextField();
+        TxtAltura = new javax.swing.JTextField();
         Fecha_Inicio = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        LabelActualTipo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        TxtEdad = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         LabelActualEjemplar = new javax.swing.JLabel();
         BtnClean = new javax.swing.JButton();
         LabelActualOperario2 = new javax.swing.JLabel();
         BtnSave = new javax.swing.JButton();
         BtnBack = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TxtDescripcion = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        SelectTipo = new javax.swing.JComboBox<>();
-        TxtCodLimpieza = new javax.swing.JTextField();
-        SelectEjemplar = new javax.swing.JComboBox<>();
-        SelectOperario2 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
+        TxtTamaño = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel5.setText("Tamaño");
+
+        jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel2.setText("Altura");
+
+        TxtCodMedicion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtCodMedicionActionPerformed(evt);
+            }
+        });
 
         LabelActualOperario1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
         LabelActualOperario1.setText("jLabel8");
@@ -100,8 +114,17 @@ public class LimpiezaView extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
         jLabel9.setText("Fecha de inicio");
 
+        SelectOperario2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SelectOperario2ActionPerformed(evt);
+            }
+        });
+
         jLabel10.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel10.setText("Fecha de fin");
+        jLabel10.setText("Fecha de inicio");
+
+        jLabel8.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel8.setText("Operario #1");
 
         try {
             Fecha_Fin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
@@ -109,6 +132,12 @@ public class LimpiezaView extends javax.swing.JFrame {
             ex.printStackTrace();
         }
         Fecha_Fin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        TxtAltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtAlturaActionPerformed(evt);
+            }
+        });
 
         try {
             Fecha_Inicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
@@ -119,18 +148,24 @@ public class LimpiezaView extends javax.swing.JFrame {
 
         jLabel11.setText("YYYY-MM-DD HH:MM:SS");
 
-        LabelActualTipo.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        LabelActualTipo.setText("jLabel8");
-
         jLabel3.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel3.setText("Cod Limpieza");
+        jLabel3.setText("Codigo Medicion");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel6.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
         jLabel6.setText("Ejemplar");
 
+        TxtEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtEdadActionPerformed(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
         jLabel7.setText("Operario #2");
+
+        jLabel4.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel4.setText("Edad Relativa");
 
         LabelActualEjemplar.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
         LabelActualEjemplar.setText("jLabel8");
@@ -163,110 +198,85 @@ public class LimpiezaView extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel5.setText("Descripcion");
-
-        jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
-        jLabel1.setText("jLabel1");
-
-        TxtDescripcion.setColumns(20);
-        TxtDescripcion.setRows(5);
-        jScrollPane1.setViewportView(TxtDescripcion);
-
-        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel2.setText("Tipo de Limpieza");
-
-        TxtCodLimpieza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtCodLimpiezaActionPerformed(evt);
-            }
-        });
-
-        SelectOperario2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SelectOperario2ActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel8.setText("Operario #1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(BtnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 416, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addComponent(BtnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(SelectOperario1, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(198, 198, 198))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(73, 73, 73)
+                                            .addComponent(LabelActualOperario1))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(70, 70, 70)
+                                            .addComponent(jLabel11)))
+                                    .addGap(64, 64, 64)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(LabelActualOperario1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(81, 81, 81)
-                                .addComponent(LabelActualEjemplar))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(70, 70, 70)
-                                .addComponent(jLabel11))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(Fecha_Inicio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel6))
+                                .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(SelectEjemplar, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(TxtCodLimpieza)))
+                                    .addComponent(SelectEjemplar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtCodMedicion, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(SelectOperario1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
+                                .addComponent(jLabel9)
+                                .addGap(28, 28, 28)
+                                .addComponent(Fecha_Inicio)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(LabelActualTipo)
-                                .addGap(172, 172, 172))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(91, 91, 91))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel5)
-                                            .addComponent(jLabel7))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(LabelActualOperario2)
-                                                .addGap(170, 170, 170))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(53, 53, 53)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(Fecha_Fin, javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(SelectOperario2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(98, 98, 98))))
+                                        .addGap(163, 163, 163)
+                                        .addComponent(LabelActualOperario2))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(322, 322, 322)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(SelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(118, 118, 118)))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jLabel10))
+                                        .addGap(25, 25, 25)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(Fecha_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(SelectOperario2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(LabelActualEjemplar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,84 +285,99 @@ public class LimpiezaView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TxtCodLimpieza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtCodMedicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(SelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(LabelActualTipo)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(jLabel5))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(SelectOperario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(LabelActualOperario2)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(Fecha_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(SelectEjemplar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)
+                            .addComponent(SelectEjemplar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelActualEjemplar)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(SelectOperario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LabelActualOperario1)
-                        .addGap(31, 31, 31)
+                        .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
                             .addComponent(Fecha_Inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))))
+                            .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TxtTamaño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(TxtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(SelectOperario2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(LabelActualOperario2)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel10)
+                            .addComponent(Fecha_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TxtCodMedicionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCodMedicionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtCodMedicionActionPerformed
+
+    private void SelectOperario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectOperario2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SelectOperario2ActionPerformed
+
+    private void TxtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtEdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtEdadActionPerformed
+
     private void BtnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCleanActionPerformed
-        TxtCodLimpieza.setText("");
-        TxtDescripcion.setText("");
+        TxtAltura.setText("");
+        TxtCodMedicion.setText("");
+        TxtEdad.setText("");
+        TxtTamaño.setText("");
         Fecha_Fin.setValue("");
         Fecha_Inicio.setValue("");
-        SelectTipo.setSelectedIndex(0);
         SelectEjemplar.setSelectedIndex(0);
         SelectOperario1.setSelectedIndex(0);
         SelectOperario2.setSelectedIndex(0);
     }//GEN-LAST:event_BtnCleanActionPerformed
 
     private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
-        String codLimpieza, descripcion, tipoLimpieza, FechaInicio, FechaFin, idEjemplar, operario1, operario2;
-        codLimpieza= TxtCodLimpieza.getText();
-        descripcion = TxtDescripcion.getText();
-        tipoLimpieza = SelectTipo.getSelectedItem().toString();
+        String codMedicion, FechaInicio, FechaFin, idEjemplar, operario1, operario2;
+        int edad = 0, tamaño = 0, altura= 0;
+        codMedicion= TxtCodMedicion.getText();
+        edad = Integer.parseInt(TxtEdad.getText());
+        tamaño = Integer.parseInt(TxtTamaño.getText());
+        altura = Integer.parseInt(TxtAltura.getText());
         FechaInicio = Fecha_Inicio.getText();
         FechaFin = Fecha_Fin.getText();
         idEjemplar = SelectEjemplar.getSelectedItem().toString();
         operario1 = SelectOperario1.getSelectedItem().toString().split(":")[0];;
         operario2 = SelectOperario2.getSelectedItem().toString().split(":")[0];;
 
-        if(codLimpieza.isEmpty() || descripcion.isEmpty() || tipoLimpieza.isEmpty() || FechaInicio.isEmpty() || FechaFin.isEmpty() || idEjemplar.isEmpty() || operario1.isEmpty() || operario2.isEmpty())
+        if(codMedicion.isEmpty() || edad == 0 || tamaño == 0 || altura == 0 || FechaInicio.isEmpty() || FechaFin.isEmpty() || idEjemplar.isEmpty() || operario1.isEmpty() || operario2.isEmpty())
         {
             System.out.println("No se puede");
         }
@@ -364,18 +389,18 @@ public class LimpiezaView extends javax.swing.JFrame {
                 query = conec.createStatement();
                 if(actionOrID == "Insertar")
                 {
-                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Limpieza, Tipo_Limpieza, Descripcion, Fecha_inicio,"
-                        + "Fecha_Fin, Id_Ejemplar, Operario_Uno, Operario_Dos)values ('"+codLimpieza+"', '"+tipoLimpieza+"',"
-                         +"'"+descripcion+"', '"+FechaInicio+"','"+FechaFin+"','"+idEjemplar+"',"
-                        + "'"+operario1+"','"+operario2+"')");
+                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Medicion, Altura, Edad_Relativa, "
+                        + "Tamano, Fecha_inicio, Fecha_Fin, Id_Ejemplar, Operario_Uno, Operario_Dos)values "
+                        + "('"+codMedicion+"', "+altura+","+edad+", "+tamaño+", '"+FechaInicio+"',"
+                        + "'"+FechaFin+"','"+idEjemplar+"','"+operario1+"','"+operario2+"')");
                     System.out.println("Se añadio correctamente");
                 }
                 else
                 {
-                    query.executeUpdate("UPDATE "+tabla+" set Tipo_Limpieza='"+tipoLimpieza+"'"
-                        + ",Descripcion='"+descripcion+"',Fecha_inicio='"+FechaInicio+"',Fecha_Fin='"+FechaFin+"',"
+                    query.executeUpdate("UPDATE "+tabla+" set Altura="+altura+",Tamano="+tamaño+""
+                        + ",Edad_Relativa="+edad+",Fecha_inicio='"+FechaInicio+"',Fecha_Fin='"+FechaFin+"',"
                         + "Id_Ejemplar='"+idEjemplar+"',Operario_Uno='"+operario1+"',Operario_Dos='"+operario2+"' "
-                        + "WHERE Cod_Limpieza = '"+actionOrID+"'");
+                        + "WHERE Cod_Medicion = '"+actionOrID+"'");
                     System.out.println("Se actualizo correctamente");
                 }
             }
@@ -393,19 +418,13 @@ public class LimpiezaView extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_BtnBackActionPerformed
 
-    private void TxtCodLimpiezaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCodLimpiezaActionPerformed
+    private void TxtAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtAlturaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtCodLimpiezaActionPerformed
-
-    private void SelectOperario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectOperario2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SelectOperario2ActionPerformed
+    }//GEN-LAST:event_TxtAlturaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -420,20 +439,20 @@ public class LimpiezaView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MedicionesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MedicionesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MedicionesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MedicionesView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PodasView().setVisible(true);
+                new MedicionesView().setVisible(true);
             }
         });
     }
@@ -455,12 +474,13 @@ public class LimpiezaView extends javax.swing.JFrame {
         Connection conec = conn.getConexion();
         try{
             query = conec.createStatement();
-            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Limpieza = '"+ID+"'");
+            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Medicion = '"+ID+"'");
             while(rs.next())
             {
-                TxtCodLimpieza.setText(rs.getString("Cod_Limpieza"));
-                TxtDescripcion.setText(rs.getString("Descripcion"));
-                LabelActualTipo.setText("Actual:" +rs.getString("Tipo_Limpieza"));
+                TxtCodMedicion.setText(rs.getString("Cod_Medicion"));
+                TxtEdad.setText(rs.getString("Edad_Relativa").toString());
+                TxtTamaño.setText(rs.getString("Tamano").toString());
+                TxtAltura.setText(rs.getString("Altura").toString());
                 LabelActualEjemplar.setText("Actual: "+rs.getString("Id_Ejemplar"));
                 LabelActualOperario1.setText("Actual: "+rs.getString("Operario_Uno"));
                 LabelActualOperario2.setText("Actual: "+rs.getString("Operario_Dos"));
@@ -478,9 +498,6 @@ public class LimpiezaView extends javax.swing.JFrame {
     public static void fillSelects()
     {
         
-        //Llenamos estaticamente el Select de Tipo
-        SelectTipo.addItem("Tronco");
-        SelectTipo.addItem("Base");
         
         conn = new Conexion();
         Connection conec = conn.getConexion();
@@ -496,6 +513,7 @@ public class LimpiezaView extends javax.swing.JFrame {
             
             
             ResultSet rs2 = query.executeQuery("SELECT Cod_Empleado, Nombre FROM Operarios");
+            
             
             
             while(rs2.next())
@@ -519,23 +537,23 @@ public class LimpiezaView extends javax.swing.JFrame {
     private static javax.swing.JLabel LabelActualEjemplar;
     private static javax.swing.JLabel LabelActualOperario1;
     private static javax.swing.JLabel LabelActualOperario2;
-    private static javax.swing.JLabel LabelActualTipo;
     private static javax.swing.JComboBox<String> SelectEjemplar;
     private static javax.swing.JComboBox<String> SelectOperario1;
     private static javax.swing.JComboBox<String> SelectOperario2;
-    private static javax.swing.JComboBox<String> SelectTipo;
-    private static javax.swing.JTextField TxtCodLimpieza;
-    private static javax.swing.JTextArea TxtDescripcion;
+    private static javax.swing.JTextField TxtAltura;
+    private static javax.swing.JTextField TxtCodMedicion;
+    private static javax.swing.JTextField TxtEdad;
+    private static javax.swing.JTextField TxtTamaño;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -215,6 +215,12 @@ public class DetailModelView extends javax.swing.JFrame {
                     limpieza.setVisible(true);
                     this.setVisible(false);
                 break;
+                
+                case "Mediciones":
+                    MedicionesView medicion = new MedicionesView(table, "Insertar");
+                    medicion.setVisible(true);
+                    this.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -259,6 +265,12 @@ public class DetailModelView extends javax.swing.JFrame {
                 case "Limpieza":
                     LimpiezaView limpieza = new LimpiezaView(table, SelectedPK);
                     limpieza.setVisible(true);
+                    this.setVisible(false);
+                break;
+                
+                case "Mediciones":
+                    MedicionesView medicion = new MedicionesView(table, SelectedPK);
+                    medicion.setVisible(true);
                     this.setVisible(false);
                 break;
             }
