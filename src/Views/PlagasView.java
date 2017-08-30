@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Views;
+
 import Controllers.Conexion;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -15,23 +16,22 @@ import java.sql.SQLException;
  *
  * @author martinmelo
  */
-public class PodasView extends javax.swing.JFrame {
-    
+public class PlagasView extends javax.swing.JFrame {
+
     private static String title;
     private static JOptionPane panel;
     private static String tabla;
     private static Conexion conn;
     private static Statement query;
     private static String actionOrID;
-
     /**
-     * Creates new form PodasView
+     * Creates new form PlagasView
      */
-    public PodasView() {
+    public PlagasView() {
         initComponents();
     }
     
-    public PodasView(String tabla, String actionOrId)
+    public PlagasView(String tabla, String actionOrId)
     {
         initComponents();
         this.tabla = tabla;
@@ -43,20 +43,19 @@ public class PodasView extends javax.swing.JFrame {
             LabelActualEjemplar.setVisible(false);
             LabelActualOperario1.setVisible(false);
             LabelActualOperario2.setVisible(false);
-            LabelActualTipo.setVisible(false);
         }
         else
         {
             this.title = "Modificar" + " " + pedro+"("+actionOrId+")";
-            TxtCodPoda.setEditable(false);
+            TxtCodPlaga.setEditable(false);
             BtnClean.setEnabled(false);
             getOne(actionOrID);
         }
         jLabel1.setText(this.title);
         this.setTitle(this.title);
         fillSelects();
+    
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,26 +65,6 @@ public class PodasView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        TxtComentario = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
-        SelectTipo = new javax.swing.JComboBox<>();
-        TxtCodPoda = new javax.swing.JTextField();
-        SelectEjemplar = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        TxtFotografia = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        LabelActualEjemplar = new javax.swing.JLabel();
-        BtnClean = new javax.swing.JButton();
-        LabelActualOperario2 = new javax.swing.JLabel();
-        BtnSave = new javax.swing.JButton();
-        BtnBack = new javax.swing.JButton();
-        SelectOperario2 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
         SelectOperario1 = new javax.swing.JComboBox<>();
         LabelActualOperario1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -93,39 +72,64 @@ public class PodasView extends javax.swing.JFrame {
         Fecha_Fin = new javax.swing.JFormattedTextField();
         Fecha_Inicio = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
-        LabelActualTipo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        TxtTratamiento = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        LabelActualEjemplar = new javax.swing.JLabel();
+        BtnClean = new javax.swing.JButton();
+        LabelActualOperario2 = new javax.swing.JLabel();
+        BtnSave = new javax.swing.JButton();
+        BtnBack = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TxtDescripcion = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        TxtCodPlaga = new javax.swing.JTextField();
+        SelectEjemplar = new javax.swing.JComboBox<>();
+        SelectOperario2 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        TxtAtaque = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel5.setText("Comentario");
+        LabelActualOperario1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        LabelActualOperario1.setText("jLabel8");
 
-        jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
-        jLabel1.setText("jLabel1");
+        jLabel9.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel9.setText("Fecha de inicio");
 
-        TxtComentario.setColumns(20);
-        TxtComentario.setRows(5);
-        jScrollPane1.setViewportView(TxtComentario);
+        jLabel10.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel10.setText("Fecha de inicio");
 
-        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel2.setText("Tipo de Poda");
+        try {
+            Fecha_Fin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        Fecha_Fin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
-        TxtCodPoda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtCodPodaActionPerformed(evt);
-            }
-        });
+        try {
+            Fecha_Inicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        Fecha_Inicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+
+        jLabel11.setText("YYYY-MM-DD HH:MM:SS");
 
         jLabel3.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel3.setText("Codigo Poda");
+        jLabel3.setText("Codigo Plaga");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel6.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
         jLabel6.setText("Ejemplar");
 
-        TxtFotografia.addActionListener(new java.awt.event.ActionListener() {
+        TxtTratamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtFotografiaActionPerformed(evt);
+                TxtTratamientoActionPerformed(evt);
             }
         });
 
@@ -133,7 +137,7 @@ public class PodasView extends javax.swing.JFrame {
         jLabel7.setText("Operario #2");
 
         jLabel4.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel4.setText("Fotografia");
+        jLabel4.setText("Tratamiento");
 
         LabelActualEjemplar.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
         LabelActualEjemplar.setText("jLabel8");
@@ -166,6 +170,25 @@ public class PodasView extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel5.setText("Descripcion_daños");
+
+        jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        TxtDescripcion.setColumns(20);
+        TxtDescripcion.setRows(5);
+        jScrollPane1.setViewportView(TxtDescripcion);
+
+        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
+        jLabel2.setText("Especies Atacantes");
+
+        TxtCodPlaga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtCodPlagaActionPerformed(evt);
+            }
+        });
+
         SelectOperario2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SelectOperario2ActionPerformed(evt);
@@ -175,79 +198,10 @@ public class PodasView extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
         jLabel8.setText("Operario #1");
 
-        LabelActualOperario1.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        LabelActualOperario1.setText("jLabel8");
-
-        jLabel9.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel9.setText("Fecha de inicio");
-
-        jLabel10.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel10.setText("Fecha de inicio");
-
-        try {
-            Fecha_Fin.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        Fecha_Fin.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        try {
-            Fecha_Inicio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-##-## ##:##:##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        Fecha_Inicio.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        jLabel11.setText("YYYY-MM-DD HH:MM:SS");
-
-        LabelActualTipo.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
-        LabelActualTipo.setText("jLabel8");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel6))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtFotografia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SelectEjemplar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtCodPoda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 55, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SelectOperario2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(18, 18, 18)
-                        .addComponent(Fecha_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(33, 33, 33)
-                        .addComponent(BtnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -275,9 +229,46 @@ public class PodasView extends javax.swing.JFrame {
                 .addComponent(jLabel11)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(LabelActualTipo)
-                .addGap(153, 153, 153))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addComponent(jLabel6))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TxtTratamiento, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SelectEjemplar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtCodPlaga, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel7)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SelectOperario2, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(18, 18, 18)
+                        .addComponent(Fecha_Fin, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(BtnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -289,18 +280,16 @@ public class PodasView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(TxtCodPoda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtCodPlaga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(SelectTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LabelActualTipo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(TxtAtaque, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel4)
-                                .addComponent(TxtFotografia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(TxtTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(jLabel5)))
@@ -346,39 +335,35 @@ public class PodasView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TxtCodPodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCodPodaActionPerformed
+    private void TxtTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTratamientoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtCodPodaActionPerformed
-
-    private void TxtFotografiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtFotografiaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtFotografiaActionPerformed
+    }//GEN-LAST:event_TxtTratamientoActionPerformed
 
     private void BtnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCleanActionPerformed
-        TxtCodPoda.setText("");
-        TxtFotografia.setText("");
-        TxtComentario.setText("");
+        TxtAtaque.setText("");
+        TxtCodPlaga.setText("");
+        TxtTratamiento.setText("");
+        TxtDescripcion.setText("");
         Fecha_Fin.setValue("");
         Fecha_Inicio.setValue("");
-        SelectTipo.setSelectedIndex(0);
         SelectEjemplar.setSelectedIndex(0);
         SelectOperario1.setSelectedIndex(0);
         SelectOperario2.setSelectedIndex(0);
     }//GEN-LAST:event_BtnCleanActionPerformed
 
     private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
-        String codPode, fotografia, comentarios, tipoPoda, FechaInicio, FechaFin, idEjemplar, operario1, operario2;
-        codPode= TxtCodPoda.getText();
-        fotografia = TxtFotografia.getText();
-        comentarios = TxtComentario.getText();
-        tipoPoda = SelectTipo.getSelectedItem().toString();
+        String codPlaga, tratamiento, descripcion, ataque, FechaInicio, FechaFin, idEjemplar, operario1, operario2;
+        codPlaga= TxtCodPlaga.getText();
+        tratamiento = TxtTratamiento.getText();
+        descripcion = TxtDescripcion.getText();
+        ataque = TxtAtaque.getText();
         FechaInicio = Fecha_Inicio.getText();
         FechaFin = Fecha_Fin.getText();
         idEjemplar = SelectEjemplar.getSelectedItem().toString();
         operario1 = SelectOperario1.getSelectedItem().toString().split(":")[0];;
         operario2 = SelectOperario2.getSelectedItem().toString().split(":")[0];;
-        
-        if(codPode.isEmpty() || fotografia.isEmpty() || comentarios.isEmpty() || tipoPoda.isEmpty() || FechaInicio.isEmpty() || FechaFin.isEmpty() || idEjemplar.isEmpty() || operario1.isEmpty() || operario2.isEmpty())
+
+        if(codPlaga.isEmpty() || tratamiento.isEmpty() || descripcion.isEmpty() || ataque.isEmpty() || FechaInicio.isEmpty() || FechaFin.isEmpty() || idEjemplar.isEmpty() || operario1.isEmpty() || operario2.isEmpty())
         {
             System.out.println("No se puede");
         }
@@ -390,18 +375,18 @@ public class PodasView extends javax.swing.JFrame {
                 query = conec.createStatement();
                 if(actionOrID == "Insertar")
                 {
-                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Pode, Tipo_Poda, Comentarios, Fotografia, Fecha_inicio,"
-                            + "Fecha_Fin, Id_Ejemplar, Operario_Uno, Operario_Dos)values ('"+codPode+"', '"+tipoPoda+"',"
-                            + "'"+comentarios+"', '"+fotografia+"', '"+FechaInicio+"','"+FechaFin+"','"+idEjemplar+"',"
-                            + "'"+operario1+"','"+operario2+"')");
+                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Plaga, Especies_atacantes, Descripcion_danos, "
+                            + "Tratamiento, Fecha_inicio, Fecha_Fin, Id_Ejemplar, Operario_Uno, Operario_Dos)values "
+                            + "('"+codPlaga+"', '"+ataque+"','"+descripcion+"', '"+tratamiento+"', '"+FechaInicio+"',"
+                            + "'"+FechaFin+"','"+idEjemplar+"','"+operario1+"','"+operario2+"')");
                     System.out.println("Se añadio correctamente");
                 }
                 else
                 {
-                    query.executeUpdate("UPDATE "+tabla+" set Tipo_Poda='"+tipoPoda+"',Fotografia='"+fotografia+"'"
-                            + ",Comentarios='"+comentarios+"',Fecha_inicio='"+FechaInicio+"',Fecha_Fin='"+FechaFin+"',"
-                            + "Id_Ejemplar='"+idEjemplar+"',Operario_Uno='"+operario1+"',Operario_Dos='"+operario2+"' "
-                            + "WHERE Cod_Pode = '"+actionOrID+"'");
+                    query.executeUpdate("UPDATE "+tabla+" set Especies_atacantes='"+ataque+"',Tratamiento='"+tratamiento+"'"
+                        + ",Descripcion_danos='"+descripcion+"',Fecha_inicio='"+FechaInicio+"',Fecha_Fin='"+FechaFin+"',"
+                        + "Id_Ejemplar='"+idEjemplar+"',Operario_Uno='"+operario1+"',Operario_Dos='"+operario2+"' "
+                        + "WHERE Cod_Plaga = '"+actionOrID+"'");
                     System.out.println("Se actualizo correctamente");
                 }
             }
@@ -418,6 +403,10 @@ public class PodasView extends javax.swing.JFrame {
         detail.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_BtnBackActionPerformed
+
+    private void TxtCodPlagaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCodPlagaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtCodPlagaActionPerformed
 
     private void SelectOperario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SelectOperario2ActionPerformed
         // TODO add your handling code here:
@@ -440,20 +429,20 @@ public class PodasView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlagasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlagasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlagasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PodasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PlagasView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PodasView().setVisible(true);
+                new PlagasView().setVisible(true);
             }
         });
     }
@@ -475,13 +464,13 @@ public class PodasView extends javax.swing.JFrame {
         Connection conec = conn.getConexion();
         try{
             query = conec.createStatement();
-            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Pode = '"+ID+"'");
+            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Plaga = '"+ID+"'");
             while(rs.next())
             {
-                TxtCodPoda.setText(rs.getString("Cod_Pode"));
-                TxtFotografia.setText(rs.getString("Fotografia"));
-                TxtComentario.setText(rs.getString("Comentarios"));
-                LabelActualTipo.setText("Actual:" +rs.getString("Tipo_Poda"));
+                TxtCodPlaga.setText(rs.getString("Cod_Plaga"));
+                TxtTratamiento.setText(rs.getString("Tratamiento"));
+                TxtAtaque.setText(rs.getString("Especies_atacantes"));
+                TxtDescripcion.setText(rs.getString("Descripcion_danos"));
                 LabelActualEjemplar.setText("Actual: "+rs.getString("Id_Ejemplar"));
                 LabelActualOperario1.setText("Actual: "+rs.getString("Operario_Uno"));
                 LabelActualOperario2.setText("Actual: "+rs.getString("Operario_Dos"));
@@ -499,9 +488,6 @@ public class PodasView extends javax.swing.JFrame {
     public static void fillSelects()
     {
         
-        //Llenamos estaticamente el Select de Tipo
-        SelectTipo.addItem("Poda");
-        SelectTipo.addItem("Tala");
         
         conn = new Conexion();
         Connection conec = conn.getConexion();
@@ -541,14 +527,13 @@ public class PodasView extends javax.swing.JFrame {
     private static javax.swing.JLabel LabelActualEjemplar;
     private static javax.swing.JLabel LabelActualOperario1;
     private static javax.swing.JLabel LabelActualOperario2;
-    private static javax.swing.JLabel LabelActualTipo;
     private static javax.swing.JComboBox<String> SelectEjemplar;
     private static javax.swing.JComboBox<String> SelectOperario1;
     private static javax.swing.JComboBox<String> SelectOperario2;
-    private static javax.swing.JComboBox<String> SelectTipo;
-    private static javax.swing.JTextField TxtCodPoda;
-    private static javax.swing.JTextArea TxtComentario;
-    private static javax.swing.JTextField TxtFotografia;
+    private static javax.swing.JTextField TxtAtaque;
+    private static javax.swing.JTextField TxtCodPlaga;
+    private static javax.swing.JTextArea TxtDescripcion;
+    private static javax.swing.JTextField TxtTratamiento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

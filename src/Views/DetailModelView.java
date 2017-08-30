@@ -204,6 +204,11 @@ public class DetailModelView extends javax.swing.JFrame {
                     podas.setVisible(true);
                     this.setVisible(false);
                 break;
+                case "Eliminacion_Plagas":
+                    PlagasView plagas = new PlagasView(table, "Insertar");
+                    plagas.setVisible(true);
+                    this.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -237,6 +242,11 @@ public class DetailModelView extends javax.swing.JFrame {
                 case "Podas":
                     PodasView podas = new PodasView(table, SelectedPK);
                     podas.setVisible(true);
+                    this.setVisible(false);
+                break;
+                case "Eliminacion_Plagas":
+                    PlagasView plagas = new PlagasView(table, SelectedPK);
+                    plagas.setVisible(true);
                     this.setVisible(false);
                 break;
             }
