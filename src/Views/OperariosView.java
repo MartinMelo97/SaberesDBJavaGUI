@@ -6,6 +6,7 @@
 package Views;
 import javax.swing.JOptionPane;
 import Controllers.Conexion;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,6 +32,7 @@ public class OperariosView extends javax.swing.JFrame {
     
     public OperariosView(String tabla, String actionOrId) {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#ff9100"));
         this.tabla = tabla;
         this.actionOrID = actionOrId;
         String pedro = putNameinLabel(tabla);
@@ -81,6 +83,7 @@ public class OperariosView extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("jLabel1");
 
         TxtCodEmpleado.addActionListener(new java.awt.event.ActionListener() {

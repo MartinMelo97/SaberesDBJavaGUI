@@ -9,6 +9,7 @@ import Controllers.Conexion;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import Controllers.Conexion;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,6 +35,7 @@ public class PlagasView extends javax.swing.JFrame {
     public PlagasView(String tabla, String actionOrId)
     {
         initComponents();
+        this.getContentPane().setBackground(Color.decode("#ff9100"));
         this.tabla = tabla;
         this.actionOrID = actionOrId;
         String pedro = putNameinLabel(tabla);
@@ -174,6 +176,7 @@ public class PlagasView extends javax.swing.JFrame {
         jLabel5.setText("Descripcion_daños");
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("jLabel1");
 
         TxtDescripcion.setColumns(20);
