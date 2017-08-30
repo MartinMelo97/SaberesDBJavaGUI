@@ -14,20 +14,22 @@ import java.sql.Statement;
  *
  * @author martinmelo
  */
-public class EspecieArbolView extends javax.swing.JFrame {
-
+public class OperariosView extends javax.swing.JFrame {
+    
     private static String title;
     private static JOptionPane panel;
     private static String tabla;
     private static Conexion conn;
     private static Statement query;
     private static String actionOrID;
-    
-    public EspecieArbolView() {
+    /**
+     * Creates new form OperariosView
+     */
+    public OperariosView() {
         initComponents();
     }
     
-    public EspecieArbolView(String tabla, String actionOrId) {
+    public OperariosView(String tabla, String actionOrId) {
         initComponents();
         this.tabla = tabla;
         this.actionOrID = actionOrId;
@@ -40,7 +42,7 @@ public class EspecieArbolView extends javax.swing.JFrame {
         else
         {
             this.title = "Modificar" + " " + pedro+"("+actionOrId+")";
-            TxtCodEspecie.setEditable(false);
+            TxtCodEmpleado.setEditable(false);
             BtnClean.setEnabled(false);
             getOne(actionOrID);
         }
@@ -58,31 +60,37 @@ public class EspecieArbolView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BtnBack = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        TxtCodEspecie = new javax.swing.JTextField();
+        TxtCodEmpleado = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         TxtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        TxtFamily = new javax.swing.JTextField();
+        TxtTelefono = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         BtnClean = new javax.swing.JButton();
         BtnSave = new javax.swing.JButton();
-        BtnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(738, 481));
+
+        BtnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back-arrow.png"))); // NOI18N
+        BtnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnBackActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 1, 36)); // NOI18N
         jLabel1.setText("jLabel1");
 
-        TxtCodEspecie.addActionListener(new java.awt.event.ActionListener() {
+        TxtCodEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtCodEspecieActionPerformed(evt);
+                TxtCodEmpleadoActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel2.setText("Codigo Especie");
+        jLabel2.setText("Cod_Empleado");
 
         TxtName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,8 +102,14 @@ public class EspecieArbolView extends javax.swing.JFrame {
         jLabel3.setText("Nombre");
         jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        TxtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtTelefonoActionPerformed(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Open Sans", 0, 18)); // NOI18N
-        jLabel4.setText("Familia");
+        jLabel4.setText("Telefono de Contacto");
 
         BtnClean.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/wiping-swipe-for-floors.png"))); // NOI18N
         BtnClean.setText("Limpiar");
@@ -115,13 +129,6 @@ public class EspecieArbolView extends javax.swing.JFrame {
             }
         });
 
-        BtnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back-arrow.png"))); // NOI18N
-        BtnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBackActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,23 +137,23 @@ public class EspecieArbolView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 195, Short.MAX_VALUE)
+                        .addGap(0, 179, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                                .addComponent(TxtCodEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(TxtCodEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3)
-                                    .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TxtFamily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtTelefono, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(TxtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BtnClean, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(208, Short.MAX_VALUE))
+                        .addContainerGap(192, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -160,19 +167,19 @@ public class EspecieArbolView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
                     .addComponent(BtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtCodEspecie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtCodEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(TxtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(TxtFamily, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtnClean, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -182,16 +189,30 @@ public class EspecieArbolView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
+        DetailModelView detail = new DetailModelView(tabla);
+        detail.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BtnBackActionPerformed
+
+    private void TxtCodEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCodEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtCodEmpleadoActionPerformed
+
+    private void TxtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtNameActionPerformed
+
     private void BtnCleanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCleanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCleanActionPerformed
 
     private void BtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSaveActionPerformed
-        String code, nombre, family;
-        code = TxtCodEspecie.getText();
+        String code, nombre, telefono;
+        code = TxtCodEmpleado.getText();
         nombre = TxtName.getText();
-        family = TxtFamily.getText();
-        if(code.isEmpty() || nombre.isEmpty() || family.isEmpty())
+        telefono = TxtTelefono.getText();
+        if(code.isEmpty() || nombre.isEmpty() || telefono.isEmpty())
         {
             System.out.println("No se puede");
         }
@@ -203,13 +224,13 @@ public class EspecieArbolView extends javax.swing.JFrame {
                 query = conec.createStatement();
                 if(actionOrID == "Insertar")
                 {
-                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Especie, Nombre, Familia) "
-                            + "values ('"+code+"', '"+nombre+"', '"+family+"')");
+                    query.executeUpdate("INSERT INTO "+tabla+"(Cod_Empleado, Nombre, Telefono_Contacto) "
+                        + "values ('"+code+"', '"+nombre+"', '"+telefono+"')");
                     System.out.println("Se añadio correctamente");
                 }
                 else
                 {
-                    query.executeUpdate("UPDATE "+tabla+" set Nombre='"+nombre+"',Familia='"+family+"' WHERE Cod_Especie = '"+actionOrID+"'");
+                    query.executeUpdate("UPDATE "+tabla+" set Nombre='"+nombre+"',Telefono_Contacto='"+telefono+"' WHERE Cod_Empleado = '"+actionOrID+"'");
                     System.out.println("Se actualizo correctamente");
                 }
             }
@@ -217,24 +238,14 @@ public class EspecieArbolView extends javax.swing.JFrame {
             {
                 System.out.println("Fallo"+e);
             }
-            
+
         }
-        
+
     }//GEN-LAST:event_BtnSaveActionPerformed
 
-    private void TxtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNameActionPerformed
+    private void TxtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTelefonoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNameActionPerformed
-
-    private void TxtCodEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtCodEspecieActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TxtCodEspecieActionPerformed
-
-    private void BtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBackActionPerformed
-        DetailModelView detail = new DetailModelView(tabla);
-        detail.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_BtnBackActionPerformed
+    }//GEN-LAST:event_TxtTelefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,20 +264,20 @@ public class EspecieArbolView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EspecieArbolView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OperariosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EspecieArbolView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OperariosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EspecieArbolView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OperariosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EspecieArbolView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OperariosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EspecieArbolView().setVisible(true);
+                new OperariosView().setVisible(true);
             }
         });
     }
@@ -288,12 +299,12 @@ public class EspecieArbolView extends javax.swing.JFrame {
         Connection conec = conn.getConexion();
         try{
             query = conec.createStatement();
-            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Especie = '"+ID+"'");
+            ResultSet rs = query.executeQuery("SELECT * FROM "+tabla+" WHERE Cod_Empleado = '"+ID+"'");
             while(rs.next())
             {
-                TxtCodEspecie.setText(rs.getString("Cod_Especie"));
+                TxtCodEmpleado.setText(rs.getString("Cod_Empleado"));
                 TxtName.setText(rs.getString("Nombre"));
-                TxtFamily.setText(rs.getString("Familia"));
+                TxtTelefono.setText(rs.getString("Telefono_Contacto"));
             }
             
         }
@@ -307,9 +318,9 @@ public class EspecieArbolView extends javax.swing.JFrame {
     private javax.swing.JButton BtnBack;
     private javax.swing.JButton BtnClean;
     private javax.swing.JButton BtnSave;
-    private static javax.swing.JTextField TxtCodEspecie;
-    private static javax.swing.JTextField TxtFamily;
+    private static javax.swing.JTextField TxtCodEmpleado;
     private static javax.swing.JTextField TxtName;
+    private static javax.swing.JTextField TxtTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

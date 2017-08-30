@@ -194,6 +194,11 @@ public class DetailModelView extends javax.swing.JFrame {
                     ejemplar.setVisible(true);
                     this.setVisible(false);
                 break;
+                case "Operarios":
+                    OperariosView operarios = new OperariosView(table, "Insertar");
+                    operarios.setVisible(true);
+                    this.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -216,6 +221,11 @@ public class DetailModelView extends javax.swing.JFrame {
                 case "Ejemplar":
                     EjemplarView ejemplar = new EjemplarView(table, SelectedPK);
                     ejemplar.setVisible(true);
+                    this.setVisible(false);
+                break;
+                case "Operarios":
+                    OperariosView operarios = new OperariosView(table, SelectedPK);
+                    operarios.setVisible(true);
                     this.setVisible(false);
                 break;
             }
