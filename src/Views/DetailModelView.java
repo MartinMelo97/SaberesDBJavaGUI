@@ -188,6 +188,12 @@ public class DetailModelView extends javax.swing.JFrame {
                     LugarView lugar = new LugarView(table, "Insertar");
                     lugar.setVisible(true);
                     this.setVisible(false);
+                break;
+                case "Ejemplar":
+                    EjemplarView ejemplar = new EjemplarView(table, "Insertar");
+                    ejemplar.setVisible(true);
+                    this.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_BtnAddActionPerformed
 
@@ -205,6 +211,11 @@ public class DetailModelView extends javax.swing.JFrame {
                     
                     LugarView lugar = new LugarView(table, SelectedPK);
                     lugar.setVisible(true);
+                    this.setVisible(false);
+                break;
+                case "Ejemplar":
+                    EjemplarView ejemplar = new EjemplarView(table, SelectedPK);
+                    ejemplar.setVisible(true);
                     this.setVisible(false);
                 break;
             }
